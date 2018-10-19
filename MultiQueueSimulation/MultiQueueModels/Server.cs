@@ -23,5 +23,8 @@ namespace MultiQueueModels
         //optional if needed use them
         public int FinishTime { get; set; }
         public int TotalWorkingTime { get; set; }
+
+        public int IdleTime { get; set; }
+
     }
 }
