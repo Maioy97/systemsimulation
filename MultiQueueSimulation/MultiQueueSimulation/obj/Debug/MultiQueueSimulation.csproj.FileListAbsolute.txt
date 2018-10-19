@@ -76,3 +76,6 @@ C:\Users\soa\Downloads\tmp\MultiQueueSimulation-Students\MultiQueueSimulation\Mu
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\Template\Template\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\Template\Template\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\Template\Template\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+D:\Redirected Profile\Desktop\fcis\kolya\year 4\git-simulation\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+D:\Redirected Profile\Desktop\fcis\kolya\year 4\git-simulation\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+D:\Redirected Profile\Desktop\fcis\kolya\year 4\git-simulation\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb

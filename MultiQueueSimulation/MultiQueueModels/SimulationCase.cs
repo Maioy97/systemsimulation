@@ -51,11 +51,26 @@ namespace MultiQueueModels
                 ServiceTime = time;
             }
         }
-        public void get_arrivaltime(SimulationCase prev_case,List<TimeDistribution> distro_table) 
+        public void fill_values(SimulationCase prev_case,List<TimeDistribution> distro_table) 
         {
-            get_time(distro_table, 1);
+            this.CustomerNumber = prev_case.CustomerNumber + 1;
+            get_time(distro_table, 1);//RandomInterArrival&InterArrival filled
             this.ArrivalTime = prev_case.ArrivalTime + this.InterArrival;
-            //this.CustomerNumber = prev_case.CustomerNumber + 1;
+            get_time(distro_table, 2);//RandomService&ServiceTime filled
+            //StartTime&EndTime
+            if (ArrivalTime > AssignedServer.FinishTime)
+            {
+                StartTime = ArrivalTime;
+                this.TimeInQueue = 0;
+            }
+            else
+            {
+                StartTime = AssignedServer.FinishTime;
+                this.TimeInQueue = StartTime - ArrivalTime;
+            }
+            this.EndTime = StartTime + ServiceTime;
+            AssignedServer.FinishTime = EndTime;
+            
         }
 
 
