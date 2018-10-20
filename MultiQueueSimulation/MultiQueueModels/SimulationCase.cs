@@ -12,6 +12,7 @@ namespace MultiQueueModels
         public SimulationCase()
         {
             this.AssignedServer = new Server();
+            this.TimeInQueue = 0;
         }
 
         public int CustomerNumber { get; set; }
