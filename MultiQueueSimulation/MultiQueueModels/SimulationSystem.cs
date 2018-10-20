@@ -129,6 +129,21 @@ namespace MultiQueueModels
             }
             return InterarrivalDistribution;
         }
+        public void SetPerformanceMeasure()
+        {
+            int totalWaitingTime = 0 ;
+            int totalNumOFWaitedCus = 0;
+            int totalNumOfCus;
+            totalNumOfCus = SimulationTable.Count(); 
+            for (int i = 0; i < SimulationTable.Count(); i++)
+            {
+                totalWaitingTime+=SimulationTable[i].TimeInQueue;
+                if (SimulationTable[i].TimeInQueue > 0)
+                    totalNumOFWaitedCus++;
+            }
+
+            PerformanceMeasures.calculateMeasures(totalWaitingTime, totalNumOFWaitedCus, totalNumOfCus);
+        }
 
     }
 }
