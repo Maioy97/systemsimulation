@@ -31,7 +31,7 @@ namespace MultiQueueModels
         public void ServerSelection(int currentCaseIndex)
         {
             List<int> available_server_index = new List<int>();
-            
+            bool wait=false;
             for (int i = 0; i < NumberOfServers; i++) //fill available_server_id
             {
                 if (SimulationTable[currentCaseIndex].ArrivalTime <= Servers[i].FinishTime)
@@ -42,6 +42,7 @@ namespace MultiQueueModels
             //get the servers that will finish first if all are working
             if (available_server_index.Count == 0)
             {
+                wait=true;
                 int min_finish_time = Servers[0].FinishTime;
                 available_server_index.Add(0);
                 //search for minimum finish time
@@ -64,12 +65,20 @@ namespace MultiQueueModels
             if (SelectionMethod == Enums.SelectionMethod.HighestPriority)
             {
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[0]];
+                if(!wait)
+                {
+                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
             }
             else if (SelectionMethod == Enums.SelectionMethod.Random)
             {
                 Random rand = new Random();
                 int randomnumber = rand.Next(0, available_server_index.Count);
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[randomnumber]];
+                if (!wait)
+                {
+                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
             }
             else if (SelectionMethod == Enums.SelectionMethod.LeastUtilization)
             {
@@ -83,6 +92,10 @@ namespace MultiQueueModels
                     }
                 }
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[max_idel_server_index]];
+                if (!wait)
+                {
+                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
             }
 
         }
