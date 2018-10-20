@@ -12,10 +12,10 @@ namespace MultiQueueModels
         public int MaxQueueLength { get; set; }
         public decimal WaitingProbability { get; set; }
 
-        public void calculate(int totalWaitingTime, int totalWaitingNumOFCus, int totalNumOFCus)
+        public void calculateMeasures(int totalWaitingTime, int totalNumOFWaitedCus, int totalNumOFCus)
         {
             this.AverageWaitingTime = totalWaitingTime / totalNumOFCus;
-            this.WaitingProbability = totalWaitingNumOFCus / totalNumOFCus;
+            this.WaitingProbability = totalNumOFWaitedCus / totalNumOFCus;
         }
     }
 }
