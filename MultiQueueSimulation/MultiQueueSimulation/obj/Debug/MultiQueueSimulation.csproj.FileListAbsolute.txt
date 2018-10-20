@@ -88,3 +88,4 @@ E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueS
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.Cache
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
