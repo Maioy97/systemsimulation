@@ -87,5 +87,35 @@ namespace MultiQueueModels
 
         }
 
+        List<TimeDistribution> generate_cumulative_range(List<int> time_col, List<decimal> probability_col)
+        {
+            int size = time_col.Count;
+
+            //fill time column
+            for (int i = 0; i < size; i++)
+            {
+                InterarrivalDistribution[i].Time = time_col[i];
+                InterarrivalDistribution[i].Probability = probability_col[i];
+            }
+            //fill Cumulative column
+            InterarrivalDistribution[0].CummProbability = probability_col[0];
+            for (int i = 1; i < size; i++)
+            {
+                InterarrivalDistribution[i].CummProbability = InterarrivalDistribution[i - 1].CummProbability + probability_col[i];
+            }
+            //fill MinRange , MaxRange
+            InterarrivalDistribution[0].MinRange = 1;
+            InterarrivalDistribution[size - 1].MaxRange = 0;
+            for (int i = 0; i < size - 1; i++)
+            {
+                InterarrivalDistribution[i].MaxRange = Convert.ToInt32(InterarrivalDistribution[i].CummProbability * 100);
+            }
+            for (int i = 1; i < size; i++)
+            {
+                InterarrivalDistribution[i].MinRange = InterarrivalDistribution[i - 1].MaxRange + 1;
+            }
+            return InterarrivalDistribution;
+        }
+
     }
 }

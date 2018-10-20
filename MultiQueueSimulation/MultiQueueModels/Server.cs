@@ -25,15 +25,15 @@ namespace MultiQueueModels
         public int TotalWorkingTime { get; set; }
 
         // New Definitions 
-        public int idelTime { get; set; }
+        public int IdleTime { get; set; }
         public int totalServiceTime { get; set; }
 
         // function to calculate IdleProbability,AverageServiceTime and Utilization
         public void calculate(int totalRunTime, int totalNumOfCus)
         {
-            this.totalServiceTime = totalRunTime - idelTime;
+            this.totalServiceTime = totalRunTime - IdleTime;
 
-            this.IdleProbability = idelTime / totalRunTime;
+            this.IdleProbability = IdleTime / totalRunTime;
             this.AverageServiceTime = totalServiceTime / totalNumOfCus;
             this.Utilization = totalServiceTime / totalRunTime;
         }

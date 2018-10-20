@@ -82,3 +82,9 @@ D:\Redirected Profile\Desktop\fcis\kolya\year 4\git-simulation\systemsimulation\
 E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
 E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csprojResolveAssemblyReference.cache
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form1.resources
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Properties.Resources.resources
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.Cache
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
