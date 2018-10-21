@@ -12,6 +12,7 @@ namespace MultiQueueModels
         public SimulationCase()
         {
             this.AssignedServer = new Server();
+            this.TimeInQueue = 0;
         }
 
         public int CustomerNumber { get; set; }
@@ -51,7 +52,42 @@ namespace MultiQueueModels
                 ServiceTime = time;
             }
         }
-        public void fill_values(SimulationCase prev_case,List<TimeDistribution> distro_table) 
+        public void fill_arrival_values(SimulationCase prev_case,List<TimeDistribution> distro_table) 
+        {
+            this.CustomerNumber = prev_case.CustomerNumber + 1;
+            get_time(distro_table, 1);//RandomInterArrival&InterArrival filled
+            this.ArrivalTime = prev_case.ArrivalTime + this.InterArrival;
+        }
+        public void fill_service_values(List<bool> graphData)
+        {
+            get_time(this.AssignedServer.TimeDistribution, 2);//RandomService&ServiceTime filled
+            //StartTime&EndTime
+            if (ArrivalTime > AssignedServer.FinishTime)
+            {
+                StartTime = ArrivalTime;
+                this.TimeInQueue = 0;
+            }
+            else
+            {
+                StartTime = AssignedServer.FinishTime;
+                this.TimeInQueue = StartTime - ArrivalTime;
+            }
+            this.EndTime = StartTime + ServiceTime;
+
+            while (graphData.Count < EndTime)
+            {
+                graphData.Add(false);
+            }
+            if (ArrivalTime < StartTime)
+            {
+                for (int i = ArrivalTime; i < StartTime; i++)
+                {
+                    graphData[i] = true;
+                }
+            }
+            AssignedServer.FinishTime = EndTime;
+        }
+        /*public void fill_values(SimulationCase prev_case, List<TimeDistribution> distro_table)
         {
             this.CustomerNumber = prev_case.CustomerNumber + 1;
             get_time(distro_table, 1);//RandomInterArrival&InterArrival filled
@@ -70,10 +106,7 @@ namespace MultiQueueModels
             }
             this.EndTime = StartTime + ServiceTime;
             AssignedServer.FinishTime = EndTime;
-            
-        }
-
-
+        }*/
     }
 
 }

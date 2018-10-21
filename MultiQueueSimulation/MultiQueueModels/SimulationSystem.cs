@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MultiQueueModels
 {
@@ -14,6 +15,7 @@ namespace MultiQueueModels
             this.InterarrivalDistribution = new List<TimeDistribution>();
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
+            this.graphData = new List<bool>();
         }
 
         ///////////// INPUTS ///////////// 
@@ -23,15 +25,17 @@ namespace MultiQueueModels
         public List<TimeDistribution> InterarrivalDistribution { get; set; }
         public Enums.StoppingCriteria StoppingCriteria { get; set; }
         public Enums.SelectionMethod SelectionMethod { get; set; }
+        public int finishtime;
 
         ///////////// OUTPUTS /////////////
         public List<SimulationCase> SimulationTable { get; set; }
         public PerformanceMeasures PerformanceMeasures { get; set; }
+        public List<bool> graphData;
 
         public void ServerSelection(int currentCaseIndex)
         {
             List<int> available_server_index = new List<int>();
-            
+            bool wait=false;
             for (int i = 0; i < NumberOfServers; i++) //fill available_server_id
             {
                 if (SimulationTable[currentCaseIndex].ArrivalTime <= Servers[i].FinishTime)
@@ -42,6 +46,7 @@ namespace MultiQueueModels
             //get the servers that will finish first if all are working
             if (available_server_index.Count == 0)
             {
+                wait=true;
                 int min_finish_time = Servers[0].FinishTime;
                 available_server_index.Add(0);
                 //search for minimum finish time
@@ -64,12 +69,20 @@ namespace MultiQueueModels
             if (SelectionMethod == Enums.SelectionMethod.HighestPriority)
             {
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[0]];
+                if(!wait)
+                {
+                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
             }
             else if (SelectionMethod == Enums.SelectionMethod.Random)
             {
                 Random rand = new Random();
                 int randomnumber = rand.Next(0, available_server_index.Count);
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[randomnumber]];
+                if (!wait)
+                {
+                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
             }
             else if (SelectionMethod == Enums.SelectionMethod.LeastUtilization)
             {
@@ -83,39 +96,196 @@ namespace MultiQueueModels
                     }
                 }
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[max_idel_server_index]];
+                if (!wait)
+                {
+                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
             }
 
         }
 
-        List<TimeDistribution> generate_cumulative_range(List<int> time_col, List<decimal> probability_col)
+        void generate_cumulative_range(List<TimeDistribution> dist)
         {
-            int size = time_col.Count;
+            int size = dist.Count;
 
-            //fill time column
-            for (int i = 0; i < size; i++)
-            {
-                InterarrivalDistribution[i].Time = time_col[i];
-                InterarrivalDistribution[i].Probability = probability_col[i];
-            }
             //fill Cumulative column
-            InterarrivalDistribution[0].CummProbability = probability_col[0];
+            dist[0].CummProbability = dist[0].Probability;
             for (int i = 1; i < size; i++)
             {
-                InterarrivalDistribution[i].CummProbability = InterarrivalDistribution[i - 1].CummProbability + probability_col[i];
+                dist[i].CummProbability = dist[i - 1].CummProbability + dist[i].Probability;
             }
             //fill MinRange , MaxRange
-            InterarrivalDistribution[0].MinRange = 1;
-            InterarrivalDistribution[size - 1].MaxRange = 0;
+            dist[0].MinRange = 1;
+            dist[size - 1].MaxRange = 0;
             for (int i = 0; i < size - 1; i++)
             {
-                InterarrivalDistribution[i].MaxRange = Convert.ToInt32(InterarrivalDistribution[i].CummProbability * 100);
+                dist[i].MaxRange = Convert.ToInt32(dist[i].CummProbability * 100);
             }
             for (int i = 1; i < size; i++)
             {
-                InterarrivalDistribution[i].MinRange = InterarrivalDistribution[i - 1].MaxRange + 1;
+                dist[i].MinRange = dist[i - 1].MaxRange + 1;
             }
-            return InterarrivalDistribution;
         }
 
+        public void SetPerformanceMeasure()
+        {
+            int totalWaitingTime = 0 ;
+            int totalNumOFWaitedCus = 0;
+            int totalNumOfCus;
+            totalNumOfCus = SimulationTable.Count(); 
+            for (int i = 0; i < SimulationTable.Count(); i++)
+            {
+                totalWaitingTime+=SimulationTable[i].TimeInQueue;
+                if (SimulationTable[i].TimeInQueue > 0)
+                    totalNumOFWaitedCus++;
+            }
+
+            PerformanceMeasures.calculateMeasures(totalWaitingTime, totalNumOFWaitedCus, totalNumOfCus);
+        }
+
+        public void ReadInput(string filepath)
+        {
+            string str;
+            /*    int NumberOfServers = 0;
+                int StoppingNumber;
+                int StoppingCriteria;
+                int SelectionMethod;*/
+            FileStream fs = new FileStream(filepath, FileMode.Open);
+            StreamReader SR = new StreamReader(fs);
+            //    char s = (char)SR.Read();
+            while (SR.Peek() != -1)
+            {
+                str = SR.ReadLine();
+                if (str == "NumberOfServers")
+                {
+                    NumberOfServers = int.Parse(SR.ReadLine());
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "StoppingNumber")
+                {
+                    StoppingNumber = int.Parse(SR.ReadLine());
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "StoppingCriteria")
+                {
+                    StoppingCriteria = (Enums.StoppingCriteria)(int.Parse(SR.ReadLine()));
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "SelectionMethod")
+                {
+                    SelectionMethod = (Enums.SelectionMethod)(int.Parse(SR.ReadLine()));
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "InterarrivalDistribution")
+                {
+                    str = SR.ReadLine();
+                    TimeDistribution TD = new TimeDistribution();
+                    while (str != "")
+                    {
+                        string[] substrings = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        TD.Time = int.Parse(substrings[0]);
+                        TD.Probability = int.Parse(substrings[1]);
+                        str = SR.ReadLine();
+                        InterarrivalDistribution.Add(TD);
+                    }
+                    generate_cumulative_range(InterarrivalDistribution);
+                    continue;
+                }
+                else
+                {
+                    for (int i = 0; i < NumberOfServers; i++)
+                    {
+                        Servers.Add(new Server());
+                        Servers[i].ID = i + 1;
+                        str = SR.ReadLine();
+                        TimeDistribution TD = new TimeDistribution();
+                        while (str != "" && str != null)
+                        {
+                            string[] substrings = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            TD.Time = int.Parse(substrings[0]);
+                            TD.Probability = int.Parse(substrings[1]);
+                            str = SR.ReadLine();
+                            Servers[i].TimeDistribution.Add(TD);
+                        }
+                        str = SR.ReadLine();
+                        continue;
+                    }
+                }
+            }
+
+
+        }
+
+        public void calculate_total_measures()
+        {
+            int waitingcustumer = 0, totalwaitingtime = 0;
+            for (int i = 0; i <SimulationTable.Count; i++)
+            {
+                if (SimulationTable[i].TimeInQueue != 0)
+                {
+                    waitingcustumer++;
+                    totalwaitingtime += SimulationTable[i].TimeInQueue;
+                }
+            }
+            PerformanceMeasures.calculateMeasures(totalwaitingtime, waitingcustumer,SimulationTable.Count);
+        }
+
+        public void StartSimulation(string filepath)
+        {
+            ReadInput(filepath);
+            generate_cumulative_range(InterarrivalDistribution);
+            for (int i = 0; i < NumberOfServers; i++)
+            {
+                generate_cumulative_range(Servers[i].TimeDistribution);
+            }
+            //first customer
+            SimulationTable.Add(new SimulationCase());
+            SimulationTable[0].CustomerNumber = 1;
+            SimulationTable[0].ArrivalTime = 0;
+            ServerSelection(0);
+            SimulationTable[0].fill_service_values(graphData);
+
+            if (StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers)
+            {
+                for (int i = 1; i < StoppingNumber; i++)
+                {
+                    SimulationTable.Add(new SimulationCase());
+                    SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
+                    ServerSelection(i);
+                    SimulationTable[i].fill_service_values(graphData);
+                }
+                finishtime = SimulationTable[SimulationTable.Count - 1].EndTime;
+            }
+            else
+            {
+                int i=0;
+                while(SimulationTable[i].EndTime < StoppingNumber)
+                {
+                    SimulationTable.Add(new SimulationCase());
+                    SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
+                    ServerSelection(i);
+                    SimulationTable[i].fill_service_values(graphData);
+                    i++;
+                }
+                if (SimulationTable[i].EndTime >StoppingNumber)
+                {
+                    SimulationTable[i].AssignedServer.FinishTime -= SimulationTable[i].ServiceTime;
+                    SimulationTable.RemoveAt(i - 1);
+                }
+                finishtime = StoppingNumber;
+            }
+
+            //servers calculation
+            for (int i = 0; i < NumberOfServers; i++)
+            {
+                Servers[i].calculate(finishtime, SimulationTable.Count);
+            }
+
+            calculate_total_measures();
+        }
     }
 }
