@@ -15,6 +15,7 @@ namespace MultiQueueModels
             this.InterarrivalDistribution = new List<TimeDistribution>();
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
+            this.graphData = new List<bool>();
         }
 
         ///////////// INPUTS ///////////// 
@@ -29,6 +30,7 @@ namespace MultiQueueModels
         ///////////// OUTPUTS /////////////
         public List<SimulationCase> SimulationTable { get; set; }
         public PerformanceMeasures PerformanceMeasures { get; set; }
+        public List<bool> graphData;
 
         public void ServerSelection(int currentCaseIndex)
         {
@@ -245,7 +247,7 @@ namespace MultiQueueModels
             SimulationTable[0].CustomerNumber = 1;
             SimulationTable[0].ArrivalTime = 0;
             ServerSelection(0);
-            SimulationTable[0].fill_service_values();
+            SimulationTable[0].fill_service_values(graphData);
 
             if (StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers)
             {
@@ -254,7 +256,7 @@ namespace MultiQueueModels
                     SimulationTable.Add(new SimulationCase());
                     SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
                     ServerSelection(i);
-                    SimulationTable[i].fill_service_values();
+                    SimulationTable[i].fill_service_values(graphData);
                 }
                 finishtime = SimulationTable[SimulationTable.Count - 1].EndTime;
             }
@@ -266,7 +268,7 @@ namespace MultiQueueModels
                     SimulationTable.Add(new SimulationCase());
                     SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
                     ServerSelection(i);
-                    SimulationTable[i].fill_service_values();
+                    SimulationTable[i].fill_service_values(graphData);
                     i++;
                 }
                 if (SimulationTable[i].EndTime >StoppingNumber)

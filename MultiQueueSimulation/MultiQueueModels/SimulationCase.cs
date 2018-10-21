@@ -58,7 +58,7 @@ namespace MultiQueueModels
             get_time(distro_table, 1);//RandomInterArrival&InterArrival filled
             this.ArrivalTime = prev_case.ArrivalTime + this.InterArrival;
         }
-        public void fill_service_values()
+        public void fill_service_values(List<bool> graphData)
         {
             get_time(this.AssignedServer.TimeDistribution, 2);//RandomService&ServiceTime filled
             //StartTime&EndTime
@@ -73,6 +73,18 @@ namespace MultiQueueModels
                 this.TimeInQueue = StartTime - ArrivalTime;
             }
             this.EndTime = StartTime + ServiceTime;
+
+            while (graphData.Count < EndTime)
+            {
+                graphData.Add(false);
+            }
+            if (ArrivalTime < StartTime)
+            {
+                for (int i = ArrivalTime; i < StartTime; i++)
+                {
+                    graphData[i] = true;
+                }
+            }
             AssignedServer.FinishTime = EndTime;
         }
         /*public void fill_values(SimulationCase prev_case, List<TimeDistribution> distro_table)
