@@ -24,6 +24,7 @@ namespace MultiQueueModels
         public List<TimeDistribution> InterarrivalDistribution { get; set; }
         public Enums.StoppingCriteria StoppingCriteria { get; set; }
         public Enums.SelectionMethod SelectionMethod { get; set; }
+        public int finishtime;
 
         ///////////// OUTPUTS /////////////
         public List<SimulationCase> SimulationTable { get; set; }
@@ -101,35 +102,29 @@ namespace MultiQueueModels
 
         }
 
-        List<TimeDistribution> generate_cumulative_range(List<int> time_col, List<decimal> probability_col)
+        void generate_cumulative_range(List<TimeDistribution> dist)
         {
-            int size = time_col.Count;
+            int size = dist.Count;
 
-            //fill time column
-            for (int i = 0; i < size; i++)
-            {
-                InterarrivalDistribution[i].Time = time_col[i];
-                InterarrivalDistribution[i].Probability = probability_col[i];
-            }
             //fill Cumulative column
-            InterarrivalDistribution[0].CummProbability = probability_col[0];
+            dist[0].CummProbability = dist[0].Probability;
             for (int i = 1; i < size; i++)
             {
-                InterarrivalDistribution[i].CummProbability = InterarrivalDistribution[i - 1].CummProbability + probability_col[i];
+                dist[i].CummProbability = dist[i - 1].CummProbability + dist[i].Probability;
             }
             //fill MinRange , MaxRange
-            InterarrivalDistribution[0].MinRange = 1;
-            InterarrivalDistribution[size - 1].MaxRange = 0;
+            dist[0].MinRange = 1;
+            dist[size - 1].MaxRange = 0;
             for (int i = 0; i < size - 1; i++)
             {
-                InterarrivalDistribution[i].MaxRange = Convert.ToInt32(InterarrivalDistribution[i].CummProbability * 100);
+                dist[i].MaxRange = Convert.ToInt32(dist[i].CummProbability * 100);
             }
             for (int i = 1; i < size; i++)
             {
-                InterarrivalDistribution[i].MinRange = InterarrivalDistribution[i - 1].MaxRange + 1;
+                dist[i].MinRange = dist[i - 1].MaxRange + 1;
             }
-            return InterarrivalDistribution;
         }
+
         public void SetPerformanceMeasure()
         {
             int totalWaitingTime = 0 ;
@@ -146,14 +141,14 @@ namespace MultiQueueModels
             PerformanceMeasures.calculateMeasures(totalWaitingTime, totalNumOFWaitedCus, totalNumOfCus);
         }
 
-        public void ReadInput()
+        public void ReadInput(string filepath)
         {
             string str;
             /*    int NumberOfServers = 0;
                 int StoppingNumber;
                 int StoppingCriteria;
                 int SelectionMethod;*/
-            FileStream fs = new FileStream("TestCase1.txt", FileMode.Open);
+            FileStream fs = new FileStream(filepath, FileMode.Open);
             StreamReader SR = new StreamReader(fs);
             //    char s = (char)SR.Read();
             while (SR.Peek() != -1)
@@ -195,12 +190,15 @@ namespace MultiQueueModels
                         str = SR.ReadLine();
                         InterarrivalDistribution.Add(TD);
                     }
+                    generate_cumulative_range(InterarrivalDistribution);
                     continue;
                 }
                 else
                 {
                     for (int i = 0; i < NumberOfServers; i++)
                     {
+                        Servers.Add(new Server());
+                        Servers[i].ID = i + 1;
                         str = SR.ReadLine();
                         TimeDistribution TD = new TimeDistribution();
                         while (str != "" && str != null)
@@ -209,7 +207,7 @@ namespace MultiQueueModels
                             TD.Time = int.Parse(substrings[0]);
                             TD.Probability = int.Parse(substrings[1]);
                             str = SR.ReadLine();
-                            InterarrivalDistribution.Add(TD);
+                            Servers[i].TimeDistribution.Add(TD);
                         }
                         str = SR.ReadLine();
                         continue;
@@ -218,6 +216,74 @@ namespace MultiQueueModels
             }
 
 
+        }
+
+        public void calculate_total_measures()
+        {
+            int waitingcustumer = 0, totalwaitingtime = 0;
+            for (int i = 0; i <SimulationTable.Count; i++)
+            {
+                if (SimulationTable[i].TimeInQueue != 0)
+                {
+                    waitingcustumer++;
+                    totalwaitingtime += SimulationTable[i].TimeInQueue;
+                }
+            }
+            PerformanceMeasures.calculateMeasures(totalwaitingtime, waitingcustumer,SimulationTable.Count);
+        }
+
+        public void StartSimulation(string filepath)
+        {
+            ReadInput(filepath);
+            generate_cumulative_range(InterarrivalDistribution);
+            for (int i = 0; i < NumberOfServers; i++)
+            {
+                generate_cumulative_range(Servers[i].TimeDistribution);
+            }
+            //first customer
+            SimulationTable.Add(new SimulationCase());
+            SimulationTable[0].CustomerNumber = 1;
+            SimulationTable[0].ArrivalTime = 0;
+            ServerSelection(0);
+            SimulationTable[0].fill_service_values();
+
+            if (StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers)
+            {
+                for (int i = 1; i < StoppingNumber; i++)
+                {
+                    SimulationTable.Add(new SimulationCase());
+                    SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
+                    ServerSelection(i);
+                    SimulationTable[i].fill_service_values();
+                }
+                finishtime = SimulationTable[SimulationTable.Count - 1].EndTime;
+            }
+            else
+            {
+                int i=0;
+                while(SimulationTable[i].EndTime < StoppingNumber)
+                {
+                    SimulationTable.Add(new SimulationCase());
+                    SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
+                    ServerSelection(i);
+                    SimulationTable[i].fill_service_values();
+                    i++;
+                }
+                if (SimulationTable[i].EndTime >StoppingNumber)
+                {
+                    SimulationTable[i].AssignedServer.FinishTime -= SimulationTable[i].ServiceTime;
+                    SimulationTable.RemoveAt(i - 1);
+                }
+                finishtime = StoppingNumber;
+            }
+
+            //servers calculation
+            for (int i = 0; i < NumberOfServers; i++)
+            {
+                Servers[i].calculate(finishtime, SimulationTable.Count);
+            }
+
+            calculate_total_measures();
         }
     }
 }

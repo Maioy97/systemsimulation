@@ -89,3 +89,14 @@ E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueS
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csprojResolveAssemblyReference.cache
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form1.resources
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Properties.Resources.resources
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.Cache
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.pdb
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueTesting.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
