@@ -1,0 +1,73 @@
+public void ReadInput()
+        {
+            string str;
+        /*    int NumberOfServers = 0;
+            int StoppingNumber;
+            int StoppingCriteria;
+            int SelectionMethod;*/
+            FileStream fs = new FileStream("TestCase1.txt", FileMode.Open);
+            StreamReader SR = new StreamReader(fs);
+            //    char s = (char)SR.Read();
+            while (SR.Peek() != -1)
+            {
+                str = SR.ReadLine();
+                if (str == "NumberOfServers")
+                {
+                    NumberOfServers = int.Parse(SR.ReadLine());
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "StoppingNumber")
+                {
+                    StoppingNumber = int.Parse(SR.ReadLine());
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "StoppingCriteria")
+                {
+                    StoppingCriteria = (Enums.StoppingCriteria)(int.Parse(SR.ReadLine()));
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "SelectionMethod")
+                {
+                    SelectionMethod = (Enums.SelectionMethod)(int.Parse(SR.ReadLine()));
+                    SR.ReadLine();
+                    continue;
+                }
+                else if (str == "InterarrivalDistribution")
+                {
+                    str = SR.ReadLine();
+                    TimeDistribution TD= new TimeDistribution();
+                    while (str != "")
+                    {
+                        string[] substrings = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        TD.Time=int.Parse(substrings[0]);
+                        TD.Probability=int.Parse(substrings[1]);
+                        str = SR.ReadLine();
+                        InterarrivalDistribution.Add(TD);
+                    }
+                    continue;
+                }
+                else
+                {
+                    for (int i = 0; i < NumberOfServers; i++)
+                    {
+                        str = SR.ReadLine();
+                        TimeDistribution TD= new TimeDistribution();
+                        while (str != "" && str != null)
+                        {
+                            string[] substrings = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            TD.Time = int.Parse(substrings[0]);
+                            TD.Probability = int.Parse(substrings[1]);
+                            str = SR.ReadLine();
+                            InterarrivalDistribution.Add(TD);
+                        }
+                        str = SR.ReadLine();
+                        continue;
+                    }
+                }
+            }
+
+
+        }
