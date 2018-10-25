@@ -14,9 +14,11 @@ namespace MultiQueueSimulation
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        SimulationSystem simulation_sys1 ;
+        public Form2(SimulationSystem simulation_sys)
         {
             InitializeComponent();
+            simulation_sys1 = simulation_sys;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -24,11 +26,11 @@ namespace MultiQueueSimulation
             //graph data idle or not
             int idle;
 
-            SimulationSystem simulation_sys = new SimulationSystem();
-            int num_servers = simulation_sys.NumberOfServers;
+            
+            int num_servers = simulation_sys1.NumberOfServers;
 
             
-            for(int i=0; i<simulation_sys.NumberOfServers; i++)
+            for(int i=0; i<simulation_sys1.NumberOfServers; i++)
             {
                 TabPage tp = new TabPage();
                 tp.Text = "Server" + (i + 1);
@@ -44,9 +46,9 @@ namespace MultiQueueSimulation
 
                 // set points 
                 PointPairList serverpairlist = new PointPairList();
-                for(int j=0 ;j<simulation_sys.Servers[i].graphData.Count; j++ )
+                for(int j=0 ;j<simulation_sys1.Servers[i].graphData.Count; j++ )
                 {
-                    if(simulation_sys.Servers[i].graphData[j])
+                    if(simulation_sys1.Servers[i].graphData[j])
                         idle=1;
                     else
                         idle=0;

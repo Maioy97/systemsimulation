@@ -14,6 +14,7 @@ namespace MultiQueueSimulation
 {
     public partial class Form1 : Form
     {
+        SimulationSystem simulation_sys = new SimulationSystem();
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace MultiQueueSimulation
         private void button1_Click(object sender, EventArgs e)
         {
             // fill inputs
-            SimulationSystem simulation_sys = new SimulationSystem();
+            
             simulation_sys.StartSimulation("TestCase1.txt");
             num_servers.Text = simulation_sys.NumberOfServers.ToString();
             stop_criteria.Text = simulation_sys.StoppingCriteria.ToString();
@@ -76,7 +77,7 @@ namespace MultiQueueSimulation
         private void button2_Click(object sender, EventArgs e)
         {
             // close this form and move to graph form
-            Form2 form2 = new Form2();
+            Form2 form2 = new Form2(simulation_sys);
             this.Hide();
             form2.Show();
         }
