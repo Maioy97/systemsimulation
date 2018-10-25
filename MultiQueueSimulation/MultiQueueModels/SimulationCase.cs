@@ -22,6 +22,7 @@ namespace MultiQueueModels
         public int RandomService { get; set; }
         public int ServiceTime { get; set; }
         public Server AssignedServer { get; set; }
+        public int AssignedServerID { get; set; }
         public int StartTime { get; set; }
         public int EndTime { get; set; }
         public int TimeInQueue { get; set; }
@@ -63,6 +64,7 @@ namespace MultiQueueModels
         }
         public void fill_service_values()
         {
+            AssignedServerID = AssignedServer.ID;
             get_time(this.AssignedServer.TimeDistribution, 2);//RandomService&ServiceTime filled
             //StartTime&EndTime
             if (ArrivalTime > AssignedServer.FinishTime)

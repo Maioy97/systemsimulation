@@ -70,6 +70,7 @@ namespace MultiQueueSimulation
             
             //Show OUTPUT!!!
             dataGridView1.DataSource = simulation_sys.SimulationTable;
+            dataGridView1.Columns.RemoveAt(6);//to remove the assigned server object
 
 
         }
@@ -78,7 +79,6 @@ namespace MultiQueueSimulation
         {
             // close this form and move to graph form
             Form2 form2 = new Form2(simulation_sys);
-            this.Hide();
             form2.Show();
         }
 
