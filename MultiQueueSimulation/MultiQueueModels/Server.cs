@@ -13,6 +13,7 @@ namespace MultiQueueModels
             this.TimeDistribution = new List<TimeDistribution>();
             this.FinishTime = 0;
             this.IdleTime = 0;
+            this.graphData = new List<bool>();
         }
 
         public int ID { get; set; }
@@ -29,6 +30,8 @@ namespace MultiQueueModels
         // New Definitions 
         public int IdleTime { get; set; }
         public int totalServiceTime { get; set; }
+
+        public List<bool> graphData;
 
         // function to calculate IdleProbability,AverageServiceTime and Utilization
         public void calculate(int totalRunTime, int totalNumOfCus)

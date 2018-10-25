@@ -36,18 +36,23 @@ namespace MultiQueueSimulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // fill inputs
             SimulationSystem simulation_sys = new SimulationSystem();
-            simulation_sys.ReadInput("TestCase1.txt");
+            simulation_sys.StartSimulation("TestCase1.txt");
             num_servers.Text = simulation_sys.NumberOfServers.ToString();
             stop_criteria.Text = simulation_sys.StoppingCriteria.ToString();
             stop_num.Text = simulation_sys.StoppingNumber.ToString();
             select_method.Text = simulation_sys.SelectionMethod.ToString();
 
+            //----------------- fill the tab
+
+            //fill tab[0] with Inter arrival distribution table
             TabPage time_dist_tp = new TabPage();
             DataGridView time_dist_grid = new DataGridView();
             time_dist_grid.DataSource = simulation_sys.InterarrivalDistribution;
             time_dist_tp.Controls.Add(time_dist_grid);
 
+            //fill the remaining tabs with Service time distribution 
             for (int i = 0; i < simulation_sys.NumberOfServers;i++ )
             {
                 TabPage server_dist_tp = new TabPage();
@@ -55,12 +60,15 @@ namespace MultiQueueSimulation
                 server_dist_grid.DataSource = simulation_sys.Servers[i].TimeDistribution;
                 server_dist_tp.Controls.Add(server_dist_grid);
             }
+            //Show OUTPUT!!!
+            dataGridView1.DataSource = simulation_sys.SimulationTable;
 
-                dataGridView1.DataSource = simulation_sys.SimulationTable;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // close this form and move to graph form
             Form2 form2 = new Form2();
             this.Hide();
             form2.Show();

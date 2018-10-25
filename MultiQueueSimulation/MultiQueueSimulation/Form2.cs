@@ -21,26 +21,44 @@ namespace MultiQueueSimulation
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            //graph data idle or not
+            int idle;
 
             SimulationSystem simulation_sys = new SimulationSystem();
             int num_servers = simulation_sys.NumberOfServers;
-            //made reference to a GraphPane class
-            GraphPane pane = zedGraphControl1.GraphPane;
 
-            // set titles of graph , Xaxis and Yaxis
-          //  pane.Title.Text = "Server Busy Time -- Server " + server_id;
-            pane.XAxis.Title.Text = "Time";
-            pane.YAxis.Title.Text = "Idle OR Not";
+            TabPage tp = new TabPage();
+            for(int i=0; i<simulation_sys.NumberOfServers; i++)
+            {
+                ZedGraphControl zedgraph = new ZedGraphControl();
 
-            // set points 
-            PointPairList serverpairlist = new PointPairList();
+                //made reference to a GraphPane class
+                GraphPane pane = zedgraph.GraphPane;
 
-            // draw graph
-           // pane.AddBar("Server" + server_id, serverpairlist, Color.DarkBlue);
+                // set titles of graph , Xaxis and Yaxis
+                pane.Title.Text = "Server Busy Time -- Server " + i+1;
+                pane.XAxis.Title.Text = "Time";
+                pane.YAxis.Title.Text = "Idle OR Not";
 
-            // exchange Axis
-            zedGraphControl1.AxisChange();
+                // set points 
+                PointPairList serverpairlist = new PointPairList();
+                for(int j=0 ;j<simulation_sys.Servers[i].graphData.Count; j++ )
+                {
+                    if(simulation_sys.Servers[i].graphData[j])
+                        idle=1;
+                    else
+                        idle=0;
+                    serverpairlist.Add(j, idle);
+                }
+                
+
+                // draw graph
+                pane.AddBar("Server" + i+1, serverpairlist, Color.DarkBlue);
+
+                // exchange Axis
+                zedgraph.AxisChange();
+            }
+        
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
