@@ -38,7 +38,7 @@ namespace MultiQueueModels
             bool wait=false;
             for (int i = 0; i < NumberOfServers; i++) //fill available_server_id
             {
-                if (SimulationTable[currentCaseIndex].ArrivalTime <= Servers[i].FinishTime)
+                if (SimulationTable[currentCaseIndex].ArrivalTime >= Servers[i].FinishTime)
                 {
                     available_server_index.Add(i);
                 }
@@ -117,7 +117,7 @@ namespace MultiQueueModels
             //fill MinRange , MaxRange
             dist[0].MinRange = 1;
             dist[size - 1].MaxRange = 0;
-            for (int i = 0; i < size - 1; i++)
+            for (int i = 0; i < size; i++)
             {
                 dist[i].MaxRange = Convert.ToInt32(dist[i].CummProbability * 100);
             }

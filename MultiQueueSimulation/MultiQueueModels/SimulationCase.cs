@@ -39,7 +39,10 @@ namespace MultiQueueModels
             for (int i = 0; i < distro_table.Count(); i++)
             {
                 if (randomnumber <= distro_table[i].MaxRange && randomnumber >= distro_table[i].MinRange)
-                { time = distro_table[i].Time; }
+                { 
+                    time = distro_table[i].Time;
+                    break;
+                }
             }
             if (choice == 1)
             {

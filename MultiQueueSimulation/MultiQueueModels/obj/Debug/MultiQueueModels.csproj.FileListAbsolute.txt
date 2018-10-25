@@ -53,3 +53,16 @@ E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueM
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\zh-cn\ZedGraph.resources.dll
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\zh-tw\ZedGraph.resources.dll
 E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojResolveAssemblyReference.cache
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\ZedGraph.xml
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\de\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\es\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\fr\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\hu\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\it\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\ja\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\pt\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\sv\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\tr\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojResolveAssemblyReference.cache
