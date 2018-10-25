@@ -183,12 +183,12 @@ namespace MultiQueueModels
                 else if (str == "InterarrivalDistribution")
                 {
                     str = SR.ReadLine();
+                    TimeDistribution TD = new TimeDistribution();
                     while (str != "")
                     {
                         string[] substrings = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    TimeDistribution TD = new TimeDistribution();
                         TD.Time = int.Parse(substrings[0]);
-                        TD.Probability = decimal.Parse(substrings[1]);
+                        TD.Probability = int.Parse(substrings[1]);
                         str = SR.ReadLine();
                         InterarrivalDistribution.Add(TD);
                     }
@@ -202,12 +202,12 @@ namespace MultiQueueModels
                         Servers.Add(new Server());
                         Servers[i].ID = i + 1;
                         str = SR.ReadLine();
+                        TimeDistribution TD = new TimeDistribution();
                         while (str != "" && str != null)
                         {
                             string[] substrings = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        TimeDistribution TD = new TimeDistribution();
                             TD.Time = int.Parse(substrings[0]);
-                            TD.Probability = decimal.Parse(substrings[1]);
+                            TD.Probability = int.Parse(substrings[1]);
                             str = SR.ReadLine();
                             Servers[i].TimeDistribution.Add(TD);
                         }
