@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MultiQueueTesting">
+      <HintPath>..\..\Testing dll\MultiQueueTesting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -46,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
-    <Compile Include="Graph.cs" />
     <Compile Include="PerformanceMeasures.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="SimulationCase.cs" />

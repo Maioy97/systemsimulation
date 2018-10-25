@@ -100,3 +100,22 @@ D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueS
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form2.resources
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.pdb
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\ZedGraph.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\ZedGraph.xml
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\de\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\es\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\fr\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\hu\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\it\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\ja\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\pt\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\sv\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\tr\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\zh-cn\ZedGraph.resources.dll
+E:\year4_1\Simulation\Lab\Lab3\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\zh-tw\ZedGraph.resources.dll

@@ -34,6 +34,18 @@ namespace MultiQueueSimulation
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SimulationSystem simulation_sys = new SimulationSystem();
+            simulation_sys.ReadInput("TestCase1.txt");
+            num_servers.Text = simulation_sys.NumberOfServers.ToString();
+            stop_criteria.Text = simulation_sys.StoppingCriteria.ToString();
+            stop_num.Text = simulation_sys.StoppingNumber.ToString();
+            select_method.Text = simulation_sys.SelectionMethod.ToString();
+
+            dataGridView1.DataSource = simulation_sys.SimulationTable;
+        }
+
       
     }
 }

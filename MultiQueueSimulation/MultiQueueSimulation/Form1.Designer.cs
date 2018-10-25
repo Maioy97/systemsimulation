@@ -32,21 +32,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.num_servers = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.stop_criteria = new System.Windows.Forms.Label();
+            this.stop_num = new System.Windows.Forms.Label();
+            this.select_method = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(766, 0);
+            this.vScrollBar1.Location = new System.Drawing.Point(998, 0);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 481);
             this.vScrollBar1.TabIndex = 0;
@@ -85,16 +90,16 @@
             this.label3.Text = "Number of Servers";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label4
+            // num_servers
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label4.Location = new System.Drawing.Point(186, 161);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 17);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "label4";
+            this.num_servers.AutoSize = true;
+            this.num_servers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.num_servers.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.num_servers.Location = new System.Drawing.Point(186, 161);
+            this.num_servers.Name = "num_servers";
+            this.num_servers.Size = new System.Drawing.Size(52, 17);
+            this.num_servers.TabIndex = 4;
+            this.num_servers.Text = "label4";
             // 
             // label5
             // 
@@ -129,44 +134,44 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Selection Method";
             // 
-            // label8
+            // stop_criteria
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label8.Location = new System.Drawing.Point(186, 191);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 17);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "label8";
+            this.stop_criteria.AutoSize = true;
+            this.stop_criteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_criteria.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.stop_criteria.Location = new System.Drawing.Point(186, 191);
+            this.stop_criteria.Name = "stop_criteria";
+            this.stop_criteria.Size = new System.Drawing.Size(52, 17);
+            this.stop_criteria.TabIndex = 10;
+            this.stop_criteria.Text = "label8";
             // 
-            // label9
+            // stop_num
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label9.Location = new System.Drawing.Point(186, 219);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 17);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "label9";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            this.stop_num.AutoSize = true;
+            this.stop_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_num.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.stop_num.Location = new System.Drawing.Point(186, 219);
+            this.stop_num.Name = "stop_num";
+            this.stop_num.Size = new System.Drawing.Size(52, 17);
+            this.stop_num.TabIndex = 11;
+            this.stop_num.Text = "label9";
+            this.stop_num.Click += new System.EventHandler(this.label9_Click);
             // 
-            // label10
+            // select_method
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label10.Location = new System.Drawing.Point(186, 250);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 17);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "label10";
+            this.select_method.AutoSize = true;
+            this.select_method.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.select_method.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.select_method.Location = new System.Drawing.Point(186, 250);
+            this.select_method.Name = "select_method";
+            this.select_method.Size = new System.Drawing.Size(61, 17);
+            this.select_method.TabIndex = 12;
+            this.select_method.Text = "label10";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(260, 145);
+            this.dataGridView1.Location = new System.Drawing.Point(473, 157);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(503, 336);
             this.dataGridView1.TabIndex = 13;
@@ -182,21 +187,65 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "Start Simulation";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 298);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(436, 195);
+            this.tabControl1.TabIndex = 15;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(428, 169);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.label4.Location = new System.Drawing.Point(468, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 25);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Outputs :-";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 490);
+            this.ClientSize = new System.Drawing.Size(1024, 505);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.select_method);
+            this.Controls.Add(this.stop_num);
+            this.Controls.Add(this.stop_criteria);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.num_servers);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -206,6 +255,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,15 +267,19 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label num_servers;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label stop_criteria;
+        private System.Windows.Forms.Label stop_num;
+        private System.Windows.Forms.Label select_method;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label4;
     }
 }
 
