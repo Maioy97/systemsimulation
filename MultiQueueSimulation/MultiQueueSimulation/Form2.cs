@@ -27,11 +27,13 @@ namespace MultiQueueSimulation
             SimulationSystem simulation_sys = new SimulationSystem();
             int num_servers = simulation_sys.NumberOfServers;
 
-            TabPage tp = new TabPage();
+            
             for(int i=0; i<simulation_sys.NumberOfServers; i++)
             {
+                TabPage tp = new TabPage();
+                tp.Text = "Server" + (i + 1);
                 ZedGraphControl zedgraph = new ZedGraphControl();
-
+                zedgraph.ClientSize = tabControl1.Size;
                 //made reference to a GraphPane class
                 GraphPane pane = zedgraph.GraphPane;
 
@@ -51,12 +53,15 @@ namespace MultiQueueSimulation
                     serverpairlist.Add(j, idle);
                 }
                 
+                
 
                 // draw graph
                 pane.AddBar("Server" + i+1, serverpairlist, Color.DarkBlue);
 
                 // exchange Axis
                 zedgraph.AxisChange();
+                tp.Controls.Add(zedgraph);
+                tabControl1.TabPages.Add(tp);
             }
         
         }
