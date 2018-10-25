@@ -43,7 +43,27 @@ namespace MultiQueueSimulation
             stop_num.Text = simulation_sys.StoppingNumber.ToString();
             select_method.Text = simulation_sys.SelectionMethod.ToString();
 
-            dataGridView1.DataSource = simulation_sys.SimulationTable;
+            TabPage time_dist_tp = new TabPage();
+            DataGridView time_dist_grid = new DataGridView();
+            time_dist_grid.DataSource = simulation_sys.InterarrivalDistribution;
+            time_dist_tp.Controls.Add(time_dist_grid);
+
+            for (int i = 0; i < simulation_sys.NumberOfServers;i++ )
+            {
+                TabPage server_dist_tp = new TabPage();
+                DataGridView server_dist_grid = new DataGridView();
+                server_dist_grid.DataSource = simulation_sys.Servers[i].TimeDistribution;
+                server_dist_tp.Controls.Add(server_dist_grid);
+            }
+
+                dataGridView1.DataSource = simulation_sys.SimulationTable;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            this.Hide();
+            form2.Show();
         }
 
       
