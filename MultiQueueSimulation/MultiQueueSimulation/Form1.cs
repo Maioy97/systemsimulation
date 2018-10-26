@@ -18,6 +18,7 @@ namespace MultiQueueSimulation
         public Form1()
         {
             InitializeComponent();
+            button2.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,8 +39,8 @@ namespace MultiQueueSimulation
         private void button1_Click(object sender, EventArgs e)
         {
             // fill inputs
-            
-            simulation_sys.StartSimulation("TestCase1.txt");
+            string testcase = Constants.FileNames.TestCase3;
+            simulation_sys.StartSimulation(testcase);
             num_servers.Text = simulation_sys.NumberOfServers.ToString();
             stop_criteria.Text = simulation_sys.StoppingCriteria.ToString();
             stop_num.Text = simulation_sys.StoppingNumber.ToString();
@@ -71,8 +72,8 @@ namespace MultiQueueSimulation
             //Show OUTPUT!!!
             dataGridView1.DataSource = simulation_sys.SimulationTable;
             dataGridView1.Columns.RemoveAt(6);//to remove the assigned server object
-
-
+            MessageBox.Show(testcase+"\n"+TestingManager.Test(simulation_sys, testcase));
+            button2.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -80,6 +81,11 @@ namespace MultiQueueSimulation
             // close this form and move to graph form
             Form2 form2 = new Form2(simulation_sys);
             form2.Show();
+        }
+
+        private void stop_criteria_Click(object sender, EventArgs e)
+        {
+
         }
 
       

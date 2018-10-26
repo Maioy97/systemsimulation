@@ -13,6 +13,7 @@ namespace MultiQueueModels
             this.TimeDistribution = new List<TimeDistribution>();
             this.FinishTime = 0;
             this.IdleTime = 0;
+            this.FinishTime = 0;
             this.graphData = new List<bool>();
         }
 
@@ -38,9 +39,13 @@ namespace MultiQueueModels
         {
             this.totalServiceTime = totalRunTime - IdleTime;
 
-            this.IdleProbability = IdleTime / totalRunTime;
-            this.AverageServiceTime = totalServiceTime / totalNumOfCus;
-            this.Utilization = totalServiceTime / totalRunTime;
+            this.IdleProbability = (decimal)IdleTime / totalRunTime;
+            this.AverageServiceTime = 0;
+            if (totalNumOfCus != 0)
+            {
+                this.AverageServiceTime = (decimal)totalServiceTime / totalNumOfCus;//must be total number of customers served 
+            }
+            this.Utilization = (decimal)totalServiceTime / totalRunTime;
         }
 
         // function to generate graph NOt implemented

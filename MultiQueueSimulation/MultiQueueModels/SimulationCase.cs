@@ -13,6 +13,7 @@ namespace MultiQueueModels
         {
             this.AssignedServer = new Server();
             this.TimeInQueue = 0;
+            rand = new Random();
         }
 
         public int CustomerNumber { get; set; }
@@ -27,6 +28,7 @@ namespace MultiQueueModels
         public int EndTime { get; set; }
         public int TimeInQueue { get; set; }
 
+        Random rand;
         //-----------------------------------
         
         //choice 1 : interarrival
@@ -34,7 +36,6 @@ namespace MultiQueueModels
         //givin the distro table and a choice it gives a service time/interarrival time  
         void get_time(List<TimeDistribution> distro_table,int choice) 
         {
-            Random rand=new Random();
             int randomnumber = rand.Next(1, 101);
             int time = 0;
             for (int i = 0; i < distro_table.Count(); i++)

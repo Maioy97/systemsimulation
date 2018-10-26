@@ -95,9 +95,9 @@
             this.num_servers.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.num_servers.Location = new System.Drawing.Point(186, 161);
             this.num_servers.Name = "num_servers";
-            this.num_servers.Size = new System.Drawing.Size(52, 17);
+            this.num_servers.Size = new System.Drawing.Size(13, 17);
             this.num_servers.TabIndex = 4;
-            this.num_servers.Text = "label4";
+            this.num_servers.Text = " ";
             // 
             // label5
             // 
@@ -139,9 +139,10 @@
             this.stop_criteria.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.stop_criteria.Location = new System.Drawing.Point(186, 191);
             this.stop_criteria.Name = "stop_criteria";
-            this.stop_criteria.Size = new System.Drawing.Size(52, 17);
+            this.stop_criteria.Size = new System.Drawing.Size(13, 17);
             this.stop_criteria.TabIndex = 10;
-            this.stop_criteria.Text = "label8";
+            this.stop_criteria.Text = " ";
+            this.stop_criteria.Click += new System.EventHandler(this.stop_criteria_Click);
             // 
             // stop_num
             // 
@@ -150,9 +151,9 @@
             this.stop_num.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.stop_num.Location = new System.Drawing.Point(186, 219);
             this.stop_num.Name = "stop_num";
-            this.stop_num.Size = new System.Drawing.Size(52, 17);
+            this.stop_num.Size = new System.Drawing.Size(13, 17);
             this.stop_num.TabIndex = 11;
-            this.stop_num.Text = "label9";
+            this.stop_num.Text = " ";
             this.stop_num.Click += new System.EventHandler(this.label9_Click);
             // 
             // select_method
@@ -162,9 +163,9 @@
             this.select_method.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.select_method.Location = new System.Drawing.Point(186, 250);
             this.select_method.Name = "select_method";
-            this.select_method.Size = new System.Drawing.Size(61, 17);
+            this.select_method.Size = new System.Drawing.Size(13, 17);
             this.select_method.TabIndex = 12;
-            this.select_method.Text = "label10";
+            this.select_method.Text = " ";
             // 
             // dataGridView1
             // 

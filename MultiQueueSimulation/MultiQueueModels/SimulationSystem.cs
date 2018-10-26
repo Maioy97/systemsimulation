@@ -15,7 +15,8 @@ namespace MultiQueueModels
             this.InterarrivalDistribution = new List<TimeDistribution>();
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
-            
+            this.waiting_Costumers_count = new List<int>();
+            rand = new Random();
         }
 
         ///////////// INPUTS ///////////// 
@@ -26,7 +27,8 @@ namespace MultiQueueModels
         public Enums.StoppingCriteria StoppingCriteria { get; set; }
         public Enums.SelectionMethod SelectionMethod { get; set; }
         public int finishtime;
-
+        public List<int> waiting_Costumers_count;
+        Random rand;
         ///////////// OUTPUTS /////////////
         public List<SimulationCase> SimulationTable { get; set; }
         public PerformanceMeasures PerformanceMeasures { get; set; }
@@ -69,19 +71,42 @@ namespace MultiQueueModels
             if (SelectionMethod == Enums.SelectionMethod.HighestPriority)
             {
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[0]];
-                if(!wait)
+                if (!wait)
                 {
-                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                    Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime; 
+                }
+                else
+                {
+                    for (int i = SimulationTable[currentCaseIndex].ArrivalTime; i < SimulationTable[currentCaseIndex].AssignedServer.FinishTime; i++)
+                    {
+                        if (i >= (waiting_Costumers_count.Count()))
+                        {
+                            waiting_Costumers_count.Add(1);
+                        }
+                        else
+                            waiting_Costumers_count[i]++;
+                    }
                 }
             }
             else if (SelectionMethod == Enums.SelectionMethod.Random)
             {
-                Random rand = new Random();
                 int randomnumber = rand.Next(0, available_server_index.Count);
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[randomnumber]];
                 if (!wait)
                 {
                     Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
+                else
+                {
+                    for (int i = SimulationTable[currentCaseIndex].ArrivalTime; i < SimulationTable[currentCaseIndex].AssignedServer.FinishTime; i++)
+                    {
+                        if (i >= (waiting_Costumers_count.Count()))
+                        {
+                            waiting_Costumers_count.Add(1);
+                        }
+                        else
+                            waiting_Costumers_count[i]++;
+                    }
                 }
             }
             else if (SelectionMethod == Enums.SelectionMethod.LeastUtilization)
@@ -99,6 +124,18 @@ namespace MultiQueueModels
                 if (!wait)
                 {
                     Servers[available_server_index[0]].IdleTime += SimulationTable[currentCaseIndex].ArrivalTime - Servers[available_server_index[0]].FinishTime;
+                }
+                else
+                {
+                    for (int i = SimulationTable[currentCaseIndex].ArrivalTime; i < SimulationTable[currentCaseIndex].AssignedServer.FinishTime; i++)
+                    {
+                        if (i >= (waiting_Costumers_count.Count()))
+                        {
+                            waiting_Costumers_count.Add(1);
+                        }
+                        else
+                            waiting_Costumers_count[i]++;
+                    }
                 }
             }
 
@@ -127,7 +164,7 @@ namespace MultiQueueModels
             }
         }
 
-        public void SetPerformanceMeasure()
+        /*public void SetPerformanceMeasure()
         {
             int totalWaitingTime = 0 ;
             int totalNumOFWaitedCus = 0;
@@ -141,7 +178,7 @@ namespace MultiQueueModels
             }
 
             PerformanceMeasures.calculateMeasures(totalWaitingTime, totalNumOFWaitedCus, totalNumOfCus);
-        }
+        }*/
 
         public void ReadInput(string filepath)
         {
@@ -231,7 +268,10 @@ namespace MultiQueueModels
                     totalwaitingtime += SimulationTable[i].TimeInQueue;
                 }
             }
-            PerformanceMeasures.calculateMeasures(totalwaitingtime, waitingcustumer,SimulationTable.Count);
+            int max=0;
+            if (waiting_Costumers_count.Count >0)
+              max = waiting_Costumers_count.Max();
+            PerformanceMeasures.calculateMeasures(totalwaitingtime, waitingcustumer,SimulationTable.Count,max);
         }
 
         public void StartSimulation(string filepath)
@@ -246,6 +286,7 @@ namespace MultiQueueModels
             SimulationTable.Add(new SimulationCase());
             SimulationTable[0].CustomerNumber = 1;
             SimulationTable[0].ArrivalTime = 0;
+            SimulationTable[0].RandomInterArrival = 1;
             ServerSelection(0);
             SimulationTable[0].fill_service_values();
 
@@ -282,7 +323,16 @@ namespace MultiQueueModels
             //servers calculation
             for (int i = 0; i < NumberOfServers; i++)
             {
-                Servers[i].calculate(finishtime, SimulationTable.Count);
+                int numofCustomersperserver = 0;
+                for (int j = 0; j < SimulationTable.Count; j++)
+                {
+                    if (SimulationTable[j].AssignedServer.ID == Servers[i].ID)
+                    {
+                        numofCustomersperserver++;
+                    }
+                }
+                Servers[i].IdleTime += finishtime - Servers[i].FinishTime;
+                Servers[i].calculate(finishtime, numofCustomersperserver);
             }
 
             calculate_total_measures();
