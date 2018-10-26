@@ -11,3 +11,16 @@ D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueS
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.Cache
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 D:\CS\FCIS\Semester 7\Modeling & Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.pdb
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.dll
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueTesting.dll
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csprojResolveAssemblyReference.cache
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form1.resources
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form2.resources
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Properties.Resources.resources
+E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.Cache

@@ -48,7 +48,6 @@ namespace MultiQueueModels
             this.Utilization = (decimal)totalServiceTime / totalRunTime;
         }
 
-        // function to generate graph NOt implemented
-        public void generateGraph() { }
+       
     }
 }
