@@ -73,9 +73,44 @@ namespace MultiQueueSimulation
                 server_dist_grid.Columns.Remove("MinRange");
                 server_dist_grid.Columns.Remove("MaxRange");
                 server_dist_grid.Size = server_dist_tp.Size;
+
+                //Show Performance Measures for each server
+                TabPage server_PM_tp = new TabPage();
+                server_PM_tp.Size = tabControl2.Size;
+                server_PM_tp.Text = "Server" + (i + 1);
+                Label Idle_Pro = new Label();
+                Idle_Pro.Text = "IdleProbability";
+                Label Idle_Pro_val = new Label();
+                Idle_Pro_val.Text = simulation_sys.Servers[i].IdleProbability.ToString();
+                Label utilization = new Label();
+                utilization.Text = "Utilization";
+                Label utilization_val = new Label();
+                utilization_val.Text = simulation_sys.Servers[i].Utilization.ToString();
+                Label averageServiceTime = new Label();
+                averageServiceTime.Text = "AverageServiceTime";
+                Label averageServiceTime_val = new Label();
+                averageServiceTime_val.Text = simulation_sys.Servers[i].AverageServiceTime.ToString();
+                TableLayoutPanel table_panel = new TableLayoutPanel();
+                table_panel.ColumnCount = 2;
+                table_panel.RowCount = 3;
+                table_panel.Controls.Add(Idle_Pro);
+                table_panel.Controls.Add(Idle_Pro_val);
+                table_panel.Controls.Add(utilization);
+                table_panel.Controls.Add(utilization_val);
+                table_panel.Controls.Add(averageServiceTime);
+                table_panel.Controls.Add(averageServiceTime_val);
+                server_PM_tp.Controls.Add(table_panel);
+                tabControl2.TabPages.Add(server_PM_tp);
             }
 
+            //Show Performance Measures
+            label13.Text = simulation_sys.PerformanceMeasures.AverageWaitingTime.ToString();
+            label12.Text = simulation_sys.PerformanceMeasures.MaxQueueLength.ToString();
+            label11.Text = simulation_sys.PerformanceMeasures.WaitingProbability.ToString();
+
             
+
+
             
             //Show OUTPUT!!!
             dataGridView1.DataSource = simulation_sys.SimulationTable;
@@ -92,6 +127,16 @@ namespace MultiQueueSimulation
         }
 
         private void stop_criteria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
         {
 
         }

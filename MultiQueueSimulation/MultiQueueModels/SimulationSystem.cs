@@ -161,8 +161,9 @@ namespace MultiQueueModels
             dist[0].range = Convert.ToString(dist[0].MinRange) + " - " + Convert.ToString(dist[0].MaxRange);
             for (int i = 1; i < size; i++)
             {
-                dist[i].range = Convert.ToString(dist[i].MinRange) + " - " + Convert.ToString(dist[i].MaxRange);
                 dist[i].MinRange = dist[i - 1].MaxRange + 1;
+                dist[i].range = Convert.ToString(dist[i].MinRange) + " - " + Convert.ToString(dist[i].MaxRange);
+                
             }
         }
 
