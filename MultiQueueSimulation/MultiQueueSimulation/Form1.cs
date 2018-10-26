@@ -50,21 +50,29 @@ namespace MultiQueueSimulation
 
             //fill tab[0] with Inter arrival distribution table
             TabPage time_dist_tp = new TabPage();
+            time_dist_tp.Size = tabControl1.Size;
             time_dist_tp.Text = "Inter Arrival Distribution";
             DataGridView time_dist_grid = new DataGridView();
             time_dist_grid.DataSource = simulation_sys.InterarrivalDistribution;
             time_dist_tp.Controls.Add(time_dist_grid);
             tabControl1.TabPages.Add(time_dist_tp);
+            time_dist_grid.Columns.Remove("MinRange");
+            time_dist_grid.Columns.Remove("MaxRange");
+            time_dist_grid.Size = time_dist_tp.Size;
 
             //fill the remaining tabs with Service time distribution 
             for (int i = 0; i < simulation_sys.NumberOfServers;i++ )
             {
                 TabPage server_dist_tp = new TabPage();
+                server_dist_tp.Size = tabControl1.Size;
                 server_dist_tp.Text = "Server" + (i + 1);
                 DataGridView server_dist_grid = new DataGridView();
                 server_dist_grid.DataSource = simulation_sys.Servers[i].TimeDistribution;
                 server_dist_tp.Controls.Add(server_dist_grid);
                 tabControl1.TabPages.Add(server_dist_tp);
+                server_dist_grid.Columns.Remove("MinRange");
+                server_dist_grid.Columns.Remove("MaxRange");
+                server_dist_grid.Size = server_dist_tp.Size;
             }
 
             

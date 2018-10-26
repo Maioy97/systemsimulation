@@ -49,7 +49,7 @@
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(998, 0);
+            this.vScrollBar1.Location = new System.Drawing.Point(1268, 157);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 481);
             this.vScrollBar1.TabIndex = 0;
@@ -59,7 +59,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(254, 9);
+            this.label1.Location = new System.Drawing.Point(485, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 31);
             this.label1.TabIndex = 1;
@@ -172,7 +172,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(473, 157);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(503, 336);
+            this.dataGridView1.Size = new System.Drawing.Size(812, 434);
             this.dataGridView1.TabIndex = 13;
             // 
             // button1
@@ -193,7 +193,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 298);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(436, 195);
+            this.tabControl1.Size = new System.Drawing.Size(444, 293);
             this.tabControl1.TabIndex = 15;
             // 
             // label4
@@ -211,7 +211,7 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(841, 107);
+            this.button2.Location = new System.Drawing.Point(1150, 109);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(135, 32);
             this.button2.TabIndex = 17;
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 505);
+            this.ClientSize = new System.Drawing.Size(1297, 625);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tabControl1);
