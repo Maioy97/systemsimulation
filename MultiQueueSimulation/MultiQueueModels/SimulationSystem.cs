@@ -308,18 +308,22 @@ namespace MultiQueueModels
                 int i=0;
                 while(SimulationTable[i].EndTime < StoppingNumber)
                 {
+                    i++;
                     SimulationTable.Add(new SimulationCase());
                     SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
                     ServerSelection(i);
                     SimulationTable[i].fill_service_values();
-                    i++;
                 }
                 if (SimulationTable[i].EndTime >StoppingNumber)
                 {
+                    if (SimulationTable[i].TimeInQueue > 0)
+                    {
+                        waiting_Costumers_count.RemoveRange(SimulationTable[i].ArrivalTime, waiting_Costumers_count.Count - SimulationTable[i].ArrivalTime);
+                    }
                     SimulationTable[i].AssignedServer.FinishTime -= SimulationTable[i].ServiceTime;
-                    SimulationTable.RemoveAt(i - 1);
+                    SimulationTable.RemoveAt(i);
                 }
-                finishtime = StoppingNumber;
+                finishtime = SimulationTable[SimulationTable.Count-1].EndTime;
             }
 
             //servers calculation
