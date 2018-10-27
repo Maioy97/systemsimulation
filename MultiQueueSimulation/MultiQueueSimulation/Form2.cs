@@ -58,7 +58,7 @@ namespace MultiQueueSimulation
                 
 
                 // draw graph
-                pane.AddBar("Server" + Convert.ToString(i+1), serverpairlist, Color.DarkBlue);
+                pane.AddCurve("Server" + Convert.ToString(i+1), serverpairlist, Color.DarkBlue);
 
                 // exchange Axis
                 zedgraph.AxisChange();
