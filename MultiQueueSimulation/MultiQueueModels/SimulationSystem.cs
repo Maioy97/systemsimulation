@@ -91,6 +91,7 @@ namespace MultiQueueModels
             else if (SelectionMethod == Enums.SelectionMethod.Random)
             {
                 int randomnumber = rand.Next(0, available_server_index.Count);
+                System.Threading.Thread.Sleep(randomnumber);
                 SimulationTable[currentCaseIndex].AssignedServer = Servers[available_server_index[randomnumber]];
                 if (!wait)
                 {
@@ -167,29 +168,9 @@ namespace MultiQueueModels
             }
         }
 
-        /*public void SetPerformanceMeasure()
-        {
-            int totalWaitingTime = 0 ;
-            int totalNumOFWaitedCus = 0;
-            int totalNumOfCus;
-            totalNumOfCus = SimulationTable.Count(); 
-            for (int i = 0; i < SimulationTable.Count(); i++)
-            {
-                totalWaitingTime+=SimulationTable[i].TimeInQueue;
-                if (SimulationTable[i].TimeInQueue > 0)
-                    totalNumOFWaitedCus++;
-            }
-
-            PerformanceMeasures.calculateMeasures(totalWaitingTime, totalNumOFWaitedCus, totalNumOfCus);
-        }*/
-
         public void ReadInput(string filepath)
         {
             string str;
-            /*    int NumberOfServers = 0;
-                int StoppingNumber;
-                int StoppingCriteria;
-                int SelectionMethod;*/
             FileStream fs = new FileStream(filepath, FileMode.Open);
             StreamReader SR = new StreamReader(fs);
             //    char s = (char)SR.Read();
