@@ -10,3 +10,10 @@ E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQu
 E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojResolveAssemblyReference.cache
 E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
 E:\year4_1\Simulation\Tasks\Task 1\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb
+E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.dll
+E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.pdb
+E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\System.Net.Http.dll
+E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\bin\Debug\System.Net.Http.xml
+E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojResolveAssemblyReference.cache
+E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
+E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb

@@ -37,6 +37,7 @@ namespace MultiQueueModels
         void get_time(List<TimeDistribution> distro_table,int choice) 
         {
             int randomnumber = rand.Next(1, 101);
+            System.Threading.Thread.Sleep(randomnumber);
             int time = 0;
             for (int i = 0; i < distro_table.Count(); i++)
             {
