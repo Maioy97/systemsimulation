@@ -80,18 +80,24 @@ namespace MultiQueueModels
             }
             this.EndTime = StartTime + ServiceTime;
 
-            while (AssignedServer.graphData.Count < EndTime)
+            while (AssignedServer.graphData.Count <= EndTime)
             {
                 AssignedServer.graphData.Add(false);
-            }
+            }/*
             if (ArrivalTime < StartTime)
             {
                 for (int i = ArrivalTime; i < StartTime; i++)
                 {
                     AssignedServer.graphData[i] = true;
                 }
-            }
+            }*/
+
             AssignedServer.FinishTime = EndTime;
+
+            for (int i = StartTime; i <= EndTime; i++)
+            {
+                AssignedServer.graphData[i] = true;
+            }
         }
         /*public void fill_values(SimulationCase prev_case, List<TimeDistribution> distro_table)
         {

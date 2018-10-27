@@ -39,7 +39,7 @@ namespace MultiQueueSimulation
         private void button1_Click(object sender, EventArgs e)
         {
             // fill inputs
-            string testcase = Constants.FileNames.TestCase3;
+            string testcase = Constants.FileNames.TestCase2;
             simulation_sys.StartSimulation(testcase);
             num_servers.Text = simulation_sys.NumberOfServers.ToString();
             stop_criteria.Text = simulation_sys.StoppingCriteria.ToString();

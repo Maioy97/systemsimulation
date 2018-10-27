@@ -279,6 +279,7 @@ namespace MultiQueueModels
 
         public void StartSimulation(string filepath)
         {
+            int maxEndtime = 0;
             ReadInput(filepath);
             generate_cumulative_range(InterarrivalDistribution);
             for (int i = 0; i < NumberOfServers; i++)
@@ -292,7 +293,8 @@ namespace MultiQueueModels
             SimulationTable[0].RandomInterArrival = 1;
             ServerSelection(0);
             SimulationTable[0].fill_service_values();
-
+            if (maxEndtime < SimulationTable[0].EndTime)
+                maxEndtime = SimulationTable[0].EndTime;
             if (StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers)
             {
                 for (int i = 1; i < StoppingNumber; i++)
@@ -301,13 +303,15 @@ namespace MultiQueueModels
                     SimulationTable[i].fill_arrival_values(SimulationTable[i - 1], InterarrivalDistribution);
                     ServerSelection(i);
                     SimulationTable[i].fill_service_values();
+                    if (maxEndtime < SimulationTable[i].EndTime)
+                        maxEndtime = SimulationTable[i].EndTime;
                 }
-                finishtime = SimulationTable[SimulationTable.Count - 1].EndTime;
+                finishtime = maxEndtime;
             }
             else
             {
                 int i=0;
-                while(SimulationTable[i].EndTime < StoppingNumber)
+                while(SimulationTable[i].StartTime < StoppingNumber)//change to endtime <= if this is required
                 {
                     i++;
                     SimulationTable.Add(new SimulationCase());

@@ -33,14 +33,14 @@ namespace MultiQueueSimulation
             for(int i=0; i<simulation_sys1.NumberOfServers; i++)
             {
                 TabPage tp = new TabPage();
-                tp.Text = "Server" + (i + 1);
+                tp.Text = "Server" + Convert.ToString(i + 1);
                 ZedGraphControl zedgraph = new ZedGraphControl();
                 zedgraph.ClientSize = tabControl1.Size;
                 //made reference to a GraphPane class
                 GraphPane pane = zedgraph.GraphPane;
 
                 // set titles of graph , Xaxis and Yaxis
-                pane.Title.Text = "Server Busy Time -- Server " + i+1;
+                pane.Title.Text = "Server Busy Time -- Server " + Convert.ToString(i + 1);
                 pane.XAxis.Title.Text = "Time";
                 pane.YAxis.Title.Text = "Idle OR Not";
 
@@ -58,7 +58,7 @@ namespace MultiQueueSimulation
                 
 
                 // draw graph
-                pane.AddBar("Server" + i+1, serverpairlist, Color.DarkBlue);
+                pane.AddBar("Server" + Convert.ToString(i+1), serverpairlist, Color.DarkBlue);
 
                 // exchange Axis
                 zedgraph.AxisChange();
