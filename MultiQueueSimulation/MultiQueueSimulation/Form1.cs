@@ -40,7 +40,7 @@ namespace MultiQueueSimulation
         {
             // fill inputs
             string testcase = Constants.FileNames.TestCase2;
-            simulation_sys.StartSimulation(testcase);
+            simulation_sys.StartSimulation(@"E:\university\Fourth Year\Simulation\Project\systemsimulation\MultiQueueSimulation\MultiQueueSimulation\TestCases\"+testcase);
             num_servers.Text = simulation_sys.NumberOfServers.ToString();
             stop_criteria.Text = simulation_sys.StoppingCriteria.ToString();
             stop_num.Text = simulation_sys.StoppingNumber.ToString();
